@@ -83,23 +83,57 @@ int main()
 
     for (int i = 1; i < size3; i++)
     {
-        int curr = arr3[i];
-        int prev = i - 1;
-
-        // shift elements
-        while (prev >= 0 && arr3[prev] > curr)
+        int key = arr3[i];
+        int j = i - 1;
+        while (j >= 0 && (arr3[j] > key))
         {
-            arr3[prev + 1] = arr3[prev];
-            prev--;
+            arr3[j + 1] = arr3[j];
+            j--;
         }
-
-        // insert element at correct position
-        arr3[prev + 1] = curr;
+        arr3[j + 1] = key;
     }
 
     for (int i = 0; i < size3; i++)
     {
         cout << arr3[i] << ",";
     }
+    cout << endl;
+    // ===============================
+    // Count Sort
+    // ===============================
+
+    int arrCount[] = {4, 2, 4, 5, 7, 9, 10, 8, 7, 6};
+
+    int maxValue = INT_MIN, minValue = INT_MAX;
+    int n = sizeof(arrCount) / sizeof(int);
+    for (int i = 0; i < n; i++)
+    {
+        maxValue = max(arrCount[i], maxValue);
+        minValue = min(arrCount[i], minValue);
+    }
+
+    int freq[maxValue];
+    for (int i = 0; i <= maxValue; i++)
+    {
+        freq[i] = 0;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        freq[arrCount[i]]++;
+    }
+    for (int i = minValue, j = 0; i <= maxValue; i++)
+    {
+
+        while (freq[i] > 0)
+        {
+            arrCount[j++] = i;
+            freq[i]--;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << arrCount[i];
+    }
+
     return 0;
 }
