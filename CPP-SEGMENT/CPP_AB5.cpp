@@ -20,7 +20,7 @@ int main()
     // remove last element
     vec.pop_back();
 
-    // size of vector
+    // size of vector :
     cout << "Size of vector: " << vec.size() << endl;
 
     // prints last element

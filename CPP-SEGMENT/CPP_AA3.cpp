@@ -18,7 +18,7 @@ int main()
     //  int ptr = &a;   --- Error aayega --- Reason: &a ek address hai, aur address ko store karne ke liye pointer (int *kuch_kuch) chahiye, normal int nahi. !!
 
     cout << *ptr << "=" << a << endl;
-    cout << ptr << "=" << &a << endl;
+    cout << ptr << "=" << &a << "=" << &*ptr << endl;
     cout << &ptr << "!=" << ptr << endl;
 
     // upr ki baton se hame ye sekhne ko milta hai kii
@@ -36,5 +36,6 @@ int main()
 
     // oor ache se smjne k eliye goo to the  ~ doublePointer.png && pointer.png
 
+    cout << &**ptr2 << endl; // address of a
     return 0;
 }
