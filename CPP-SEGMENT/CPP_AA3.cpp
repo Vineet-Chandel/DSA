@@ -1,5 +1,16 @@
 #include <iostream>
 using namespace std;
+int updateTarika1(int num)
+{
+    num++;
+    return 0;
+}
+int updateTarika2(int &num)
+{
+    num++;
+    return 0;
+}
+
 int main()
 {
 
@@ -37,5 +48,20 @@ int main()
     // oor ache se smjne k eliye goo to the  ~ doublePointer.png && pointer.png
 
     cout << &**ptr2 << endl; // address of a
+
+    // refrence variables !!!
+    int alpha = 23;
+    int &beta = alpha;
+    cout << &beta << "=" << &alpha << endl;
+
+    // why the refrence variable is so important ?
+    int num = 234;
+    cout << "beforeNum" << num;
+    updateTarika1(num); // pass by value hua hai num ki n parameter mien just ek copy bane gi
+    cout << "aftreNum" << num;
+    cout << endl;
+    cout << "beforeNum" << num;
+    updateTarika2(num); // pass by value hua hai num ki n parameter mien just ek copy bane gi
+    cout << "aftreNum" << num;
     return 0;
 }
