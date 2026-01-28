@@ -1,0 +1,21 @@
+Structures
+  Student records
+  Employee database
+  JSON-like data handling
+  Classes replacement in C
+
+Unions
+  Embedded systems
+  Memory‑critical applications
+  Hardware registers
+  Variant data representation
+
+Note
+  Structure stores multiple values using separate memory blocks.
+  Union stores one value at a time using shared memory.
+  Structure is safer, union is memory efficient.
+  In C++, structure supports methods and access control
+  Structures and unions are fundamental building blocks in C/C++.
+  Structure → Data modeling
+  Union → Memory optimization
+  C++ structures are almost like classes (default public)

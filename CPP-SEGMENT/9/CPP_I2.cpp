@@ -1,61 +1,68 @@
 #include <iostream>
-#include <string>
 using namespace std;
-// multilevel Inheritance
-// Superclass (Parent)
-class Animal
+
+class showRoom
 {
+    string name;
+    string colour;
+    int rollNum;
+
 public:
-    void eat()
+    // constructors
+    showRoom()
     {
-        cout << "Animal is eating..." << endl;
+        cout << "carr start manufacturing" << endl;
+    };
+
+    // setters
+    void setName(string setNameValue)
+    {
+        name = setNameValue;
     }
-    void sleep()
+    void setColour(string setColourValue)
     {
-        cout << "Animal is sleeping..." << endl;
+        colour = setColourValue;
+    }
+    void setRollNum(int setRollNumValue)
+    {
+        rollNum = setRollNumValue;
+    }
+    void start()
+    {
+        cout << "car start worrking";
+    }
+    void stop()
+    {
+        cout << "car stop worrking";
+    }
+    // getters
+    string getName()
+    {
+        return name;
+    }
+    string getColour()
+    {
+        return colour;
+    }
+    int getRollNum()
+    {
+        return rollNum;
     }
 };
 
-// Subclass (Child) - Inherits from Animal
-class Dog : public Animal
-{
-public:
-    void bark()
-    {
-        cout << "Dog is barking!" << endl;
-    }
-};
-
-class BreedDog : public Dog
-{
-public:
-    string breed;
-    void setbreed(string breed)
-    {
-        this->breed = breed;
-    }
-    string getBreedName()
-    {
-        return breed;
-    }
-};
 int main()
 {
-    Dog myDog;
+    // object
+    showRoom s1;
 
-    // Inherited methods (from Animal)
-    myDog.eat();
-    myDog.sleep();
+    // setting
+    s1.setRollNum(23);
+    s1.setName("Maruti 800");
+    s1.setColour("white");
 
-    // Child class method
-    myDog.bark();
-
-    // breed
-    BreedDog Bd;
-
-    Bd.setbreed("german shephered");
-    Bd.bark();
-    cout << Bd.getBreedName();
-
+    // getting
+    cout << s1.getName() << endl;
+    cout << s1.getRollNum() << endl;
+    cout << s1.getColour() << endl;
     return 0;
 }

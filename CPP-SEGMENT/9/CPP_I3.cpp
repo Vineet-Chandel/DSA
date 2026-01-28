@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-// hierarchal Inheritance
+// multilevel Inheritance
 // Superclass (Parent)
 class Animal
 {
@@ -25,15 +25,20 @@ public:
         cout << "Dog is barking!" << endl;
     }
 };
-class cat : public Animal
+
+class BreedDog : public Dog
 {
 public:
-    void meaow()
+    string breed;
+    void setbreed(string breed)
     {
-        cout << "cat is meaaowwinng!" << endl;
+        this->breed = breed;
+    }
+    string getBreedName()
+    {
+        return breed;
     }
 };
-
 int main()
 {
     Dog myDog;
@@ -45,14 +50,12 @@ int main()
     // Child class method
     myDog.bark();
 
-    cat myCat;
+    // breed
+    BreedDog Bd;
 
-    // Inherited methods (from Animal)
-    myCat.eat();
-    myCat.sleep();
-
-    // Child class method
-    myCat.meaow();
+    Bd.setbreed("german shephered");
+    Bd.bark();
+    cout << Bd.getBreedName();
 
     return 0;
 }

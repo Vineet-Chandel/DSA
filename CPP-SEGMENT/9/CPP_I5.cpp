@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
-// Base class 1
+// hybrid Inheritance
+// Superclass (Parent)
 class Animal
 {
 public:
@@ -10,20 +10,14 @@ public:
     {
         cout << "Animal is eating..." << endl;
     }
-};
-
-// Base class 2
-class Pet
-{
-public:
-    void play()
+    void sleep()
     {
-        cout << "Pet is playing..." << endl;
+        cout << "Animal is sleeping..." << endl;
     }
 };
 
-// Derived class (Multiple Inheritance)
-class Dog : public Animal, public Pet
+// Subclass (Child) - Inherits from Animal
+class Dog : public Animal
 {
 public:
     void bark()
@@ -32,13 +26,53 @@ public:
     }
 };
 
+class BreedDog : public Dog
+{
+public:
+    string breed;
+    void setbreed(string breed)
+    {
+        this->breed = breed;
+    }
+    string getBreedName()
+    {
+        return breed;
+    }
+};
+class cat : public Animal
+{
+public:
+    void meaow()
+    {
+        cout << "cat is meaaowwinng!" << endl;
+    }
+};
 int main()
 {
-    Dog d;
+    Dog myDog;
 
-    d.eat();  // from Animal
-    d.play(); // from Pet
-    d.bark(); // from Dog
+    // Inherited methods (from Animal)
+    myDog.eat();
+    myDog.sleep();
+
+    // Child class method
+    myDog.bark();
+
+    // breed
+    BreedDog Bd;
+
+    Bd.setbreed("german shephered");
+    Bd.bark();
+    cout << Bd.getBreedName();
+
+    cat myCat;
+
+    // Inherited methods (from Animal)
+    myCat.eat();
+    myCat.sleep();
+
+    // Child class method
+    myCat.meaow();
 
     return 0;
 }
