@@ -11,8 +11,16 @@ public:
     // constructors
     showRoom()
     {
-        cout << "carr start manufacturing" << endl;
+        cout << "carr start manufacturing without manufacturing" << endl;
     };
+
+    showRoom(string name, string colour, int rollNum)
+    {
+        cout << "carr start manufacturing with manufacturing" << endl;
+        this->name = name;
+        this->colour = colour;
+        this->rollNum = rollNum;
+    }
 
     // setters
     void setName(string setNameValue)
@@ -52,7 +60,8 @@ public:
 
 int main()
 {
-    // object
+    // WITHOUT PARAMETER CONSTRUCTOR
+    //  object
     showRoom s1;
 
     // setting
@@ -61,8 +70,14 @@ int main()
     s1.setColour("white");
 
     // getting
-    cout << s1.getName() << endl;
-    cout << s1.getRollNum() << endl;
-    cout << s1.getColour() << endl;
+    cout << "s1 DATA :" << s1.getName() << endl;
+    cout << "s1 DATA :" << s1.getRollNum() << endl;
+    cout << "s1 DATA :" << s1.getColour() << endl;
+
+    // WITH PARAMETER CONSTRUCTOR
+    showRoom s2("bmw", "green", 33);
+    cout << "s2 DATA :" << s2.getName() << endl;
+    cout << "s2 DATA :" << s2.getRollNum() << endl;
+    cout << "s2 DATA :" << s2.getColour() << endl;
     return 0;
 }

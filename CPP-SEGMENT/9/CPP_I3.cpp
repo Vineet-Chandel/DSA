@@ -1,61 +1,45 @@
 #include <iostream>
-#include <string>
 using namespace std;
-// multilevel Inheritance
-// Superclass (Parent)
-class Animal
+
+class CPP_I3
 {
 public:
-    void eat()
+    string name;
+    int roll;
+    int *num;
+
+    CPP_I3(string name, int roll)
     {
-        cout << "Animal is eating..." << endl;
+        this->name = name;
+        this->roll = roll;
+
+        num = new int; // dynamic allocation
+        *num = 12;
     }
-    void sleep()
+    CPP_I3(CPP_I3 &orignal)
     {
-        cout << "Animal is sleeping..." << endl;
+        cout << "copying.." << endl;
+        name = orignal.name;
+        roll = orignal.roll;
+        num = orignal.num;
     }
 };
 
-// Subclass (Child) - Inherits from Animal
-class Dog : public Animal
-{
-public:
-    void bark()
-    {
-        cout << "Dog is barking!" << endl;
-    }
-};
-
-class BreedDog : public Dog
-{
-public:
-    string breed;
-    void setbreed(string breed)
-    {
-        this->breed = breed;
-    }
-    string getBreedName()
-    {
-        return breed;
-    }
-};
 int main()
 {
-    Dog myDog;
+    CPP_I3 c1("vineet", 43);
+    CPP_I3 c2(c1);
 
-    // Inherited methods (from Animal)
-    myDog.eat();
-    myDog.sleep();
+    cout << c2.name << endl;
+    cout << c2.roll << endl;
+    cout << *c2.num << endl;
 
-    // Child class method
-    myDog.bark();
+    *c2.num = 10;
 
-    // breed
-    BreedDog Bd;
+    cout << *c2.num << endl;
 
-    Bd.setbreed("german shephered");
-    Bd.bark();
-    cout << Bd.getBreedName();
+    // num is the deep copied
+    //  other than the num it is shallow copied
 
     return 0;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-// hybrid Inheritance
+// hierarchal Inheritance
 // Superclass (Parent)
 class Animal
 {
@@ -25,20 +25,6 @@ public:
         cout << "Dog is barking!" << endl;
     }
 };
-
-class BreedDog : public Dog
-{
-public:
-    string breed;
-    void setbreed(string breed)
-    {
-        this->breed = breed;
-    }
-    string getBreedName()
-    {
-        return breed;
-    }
-};
 class cat : public Animal
 {
 public:
@@ -47,6 +33,7 @@ public:
         cout << "cat is meaaowwinng!" << endl;
     }
 };
+
 int main()
 {
     Dog myDog;
@@ -57,13 +44,6 @@ int main()
 
     // Child class method
     myDog.bark();
-
-    // breed
-    BreedDog Bd;
-
-    Bd.setbreed("german shephered");
-    Bd.bark();
-    cout << Bd.getBreedName();
 
     cat myCat;
 
