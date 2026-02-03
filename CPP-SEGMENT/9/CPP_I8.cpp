@@ -33,7 +33,7 @@ public:
         Overloading c3(sumREAL, sumIMG);
     };
 
-    void nachoo()
+    virtual void nachoo()
     {
         cout << "Parent nacho nacho re" << endl;
     }
