@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>  // strlen, strcpy, strncpy, strcmp, strncmp
 #include <strings.h> // strcasecmp (POSIX)
+#include <stdlib.h>
 
 int main()
 {
@@ -58,7 +59,12 @@ int main()
         printf("strncmp : SAME till the index given \n");
     };
 
-    printf("%s\n", strupr(compar2));
-    printf("%s\n", strlwr(compar1));
+    // printf("%s\n", strupr(compar2));
+    // printf("%s\n", strlwr(compar1));
+
+    char ori[] = "heelllo wrld", *dup;
+    dup = strdup(ori);
+
+    printf("%s", dup);
     return 0;
 }

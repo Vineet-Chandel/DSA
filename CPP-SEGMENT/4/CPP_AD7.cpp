@@ -39,14 +39,17 @@ int main()
     // ===============================
     // Selection Sort
     // ===============================
-    int arr2[] = {5, 4, 1, 3, 2};
+    int arr2[] = {3, 6, 2, 1, 8, 7, 4, 5, 3, 1};
     int size2 = sizeof(arr2) / sizeof(int);
 
     int index;
+
+    // selection sort
     for (int i = 0; i < size2 - 1; i++)
     {
-        int smal_elem = INT_MAX;
-        for (int j = i; j < size2; j++)
+        int smal_elem = arr2[i];
+        index = i;
+        for (int j = i + 1; j < size2; j++)
         {
             if (smal_elem > arr2[j])
             {
@@ -61,18 +64,6 @@ int main()
         cout << arr2[i] << ",";
     }
 
-    // rev
-    // int index21;
-    // for (int i = 0; i < size2; i++)
-    // {
-    //     int smaaller = INT_MAX;
-    //     for (int j = i + 1; j < size2; j++)
-    //     {
-    //         smaaller = min(arr[j], smaaller);
-    //         index21 = j;
-    //     }
-    //     swap(arr2[i], arr2[index]);
-    // }
     cout << endl;
 
     // ===============================
