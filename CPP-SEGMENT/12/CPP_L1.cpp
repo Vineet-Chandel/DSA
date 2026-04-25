@@ -11,6 +11,15 @@ public:
     data = value;
     next = NULL;
   }
+
+  ~Node() {
+    cout << "~Node " << data << endl;
+
+    if (next != NULL) {
+      delete next;
+      next = NULL;
+    }
+  }
 };
 
 class List {
@@ -23,6 +32,13 @@ public:
     tail = NULL;
   }
 
+  ~List() {
+    cout << "~List " << endl;
+    if (head != NULL) {
+      delete head;
+      head = NULL;
+    }
+  }
   void push_front(int value) {
     Node *newNode = new Node(value);
 
@@ -54,7 +70,6 @@ public:
     }
     cout << "NULL" << endl;
   }
-
   void insertNode(int val, int pos) {
 
     //  ex: 10->20->30->40->50->NULL
@@ -97,6 +112,59 @@ public:
     newNode->next = temp->next;
     temp->next = newNode;
   }
+  void pop_front() {
+    Node *temp = head;
+
+    if (head == NULL) {
+      cout << "List is empty\n";
+      return;
+    }
+    head = head->next;
+    temp->next = NULL;
+    delete temp;
+  }
+  void search(int val) {
+    Node *temp = head;
+    bool is_found = false;
+    while (temp != NULL) {
+      if (temp->data == val) {
+        is_found = true;
+        break;
+      }
+      temp = temp->next;
+    }
+    if (is_found) {
+      cout << val << " is present in the list" << endl;
+    } else {
+      cout << val << " is not present in the list" << endl;
+    }
+  }
+  int searchRecur(Node *temp, int val) {
+
+    // Base case (very important)
+    if (temp == NULL) {
+      return -1;
+    }
+
+    // Found
+    if (temp->data == val) {
+      return 0;
+    }
+
+    // Recursive call
+    int idx = searchRecur(temp->next, val);
+
+    if (idx == -1) {
+      return -1;
+    }
+
+    return idx + 1;
+  }
+};
+
+class Example {
+public:
+  int data = 10;
 };
 
 int main() {
@@ -112,5 +180,12 @@ int main() {
   ll.insertNode(25, 2);
   ll.printList();
 
+  ll.search(30);
+  Example E1;
+  E1.data++;
+  E1.data++;
+  E1.data++;
+  E1.data++;
+  cout << E1.data << endl;
   return 0;
 }
