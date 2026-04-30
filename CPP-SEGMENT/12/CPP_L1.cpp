@@ -160,6 +160,37 @@ public:
 
     return idx + 1;
   }
+
+  void removeFromEnd(int node) {
+    int size = 0;
+    Node *temp = head;
+
+    while (temp != NULL) {
+      temp = temp->next;
+      size++;
+    }
+
+       // Invalid case
+    if (node > size) return;
+
+    // 🔥 Handle head deletion
+    if (node == size) {
+        Node *del = head;
+        head = head->next;
+        delete del;
+        return;
+    }
+    temp = head;
+    int i = 1;
+    while (i != (size - node)) {
+      temp = temp->next;
+      i++;
+    }
+
+    Node *del = temp->next;
+    temp->next = del->next;
+    delete del;
+  }
 };
 
 class Example {
