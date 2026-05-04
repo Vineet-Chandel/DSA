@@ -11,34 +11,25 @@ public:
     data = value;
     next = NULL;
   }
-
-  ~Node() {
-    cout << "~Node " << data << endl;
-
-    if (next != NULL) {
-      delete next;
-      next = NULL;
-    }
-  }
 };
 
 class List {
+public:
   Node *head;
   Node *tail;
 
-public:
   List() {
     head = NULL;
     tail = NULL;
   }
 
-  ~List() {
-    cout << "~List " << endl;
-    if (head != NULL) {
-      delete head;
-      head = NULL;
-    }
-  }
+  // ~List() {
+  //   cout << "~List " << endl;
+  //   if (head != NULL) {
+  //     delete head;
+  //     head = NULL;
+  //   }
+  // }
   void push_front(int value) {
     Node *newNode = new Node(value);
 
@@ -160,7 +151,6 @@ public:
 
     return idx + 1;
   }
-
   void removeFromEnd(int node) {
     int size = 0;
     Node *temp = head;
@@ -170,15 +160,16 @@ public:
       size++;
     }
 
-       // Invalid case
-    if (node > size) return;
+    // Invalid case
+    if (node > size)
+      return;
 
     // 🔥 Handle head deletion
     if (node == size) {
-        Node *del = head;
-        head = head->next;
-        delete del;
-        return;
+      Node *del = head;
+      head = head->next;
+      delete del;
+      return;
     }
     temp = head;
     int i = 1;
@@ -191,6 +182,43 @@ public:
     temp->next = del->next;
     delete del;
   }
+  bool isCycle(Node *head) {
+    Node *slow = head;
+    Node *fast = head;
+
+    while (fast != NULL && fast->next != NULL) {
+      slow = slow->next;
+      fast = fast->next->next;
+      if (slow == fast) {
+        return true;
+      }
+    }
+    return false;
+  }
+  void removeCycle(Node *head) {
+    Node *slow = head;
+    Node *fast = head;
+
+    while (fast != NULL && fast->next != NULL) {
+      slow = slow->next;
+      fast = fast->next->next;
+
+      if (slow == fast) {
+        slow = head;
+        while (slow != fast) {
+          slow = slow->next;
+          fast = fast->next;
+        }
+
+        Node *temp = fast;
+        while (temp->next != slow) {
+          temp = temp->next;
+        }
+        temp->next = NULL;
+        return;
+      }
+    }
+  }
 };
 
 class Example {
@@ -200,23 +228,42 @@ public:
 
 int main() {
   List ll;
-  ll.push_back(10);
-  ll.push_back(20);
-  ll.push_back(30);
-  ll.push_back(40);
-  ll.push_back(50);
+  // ll.push_back(10);
+  // ll.push_back(20);
+  // ll.push_back(30);
+  // ll.push_back(40);
+  // ll.push_back(50);
 
-  ll.printList();
+  // ll.printList();
 
-  ll.insertNode(25, 2);
-  ll.printList();
+  // ll.insertNode(25, 2);
+  // ll.printList();
 
-  ll.search(30);
-  Example E1;
-  E1.data++;
-  E1.data++;
-  E1.data++;
-  E1.data++;
-  cout << E1.data << endl;
+  // ll.search(30);
+  // Example E1;
+  // E1.data++;
+  // E1.data++;
+  // E1.data++;
+  // E1.data++;
+  // cout << E1.data << endl;
+
+  ll.push_back(1);
+  ll.push_back(2);
+  ll.push_back(3);
+  ll.push_back(4);
+
+  ll.tail->next = ll.head;
+
+  if (ll.isCycle(ll.head)) {
+    cout << "Cycle detected" << endl;
+  } else {
+    cout << "Cycle not detected" << endl;
+  }
+  ll.removeCycle(ll.head);
+  if (ll.isCycle(ll.head)) {
+    cout << "Cycle detected" << endl;
+  } else {
+    cout << "Cycle not detected" << endl;
+  }
   return 0;
 }
