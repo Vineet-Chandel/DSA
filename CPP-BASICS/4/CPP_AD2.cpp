@@ -78,7 +78,7 @@ int main()
             };
             maxSum = max(sum, maxSum);
         }
-        }
+    }
     cout << "maximum subarry sum :" << maxSum;
     return 0;
 }
