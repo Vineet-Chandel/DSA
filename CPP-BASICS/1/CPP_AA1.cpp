@@ -90,6 +90,5 @@ int main() // special function --- [3]
 // why the name is main Because the C++ language standard says: "The program's entry function must be named main."
 // we can't even change the name because compiler always finds the main function not the others
 // we also can't have the two main function
-
 // but who calls the function? most people thinks that compiler call the main function but not exactly what happens!
 // workflow of the full excecuting the function -- workflow.pdf
