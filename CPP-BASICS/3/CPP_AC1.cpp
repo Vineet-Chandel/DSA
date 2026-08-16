@@ -23,7 +23,7 @@ int main()
     // ===============================
     // IF - ELSE STATEMENT
     // ===============================
-    int age;
+    // int age;
     cout << "Enter your age: ";
     cin >> age;
 
